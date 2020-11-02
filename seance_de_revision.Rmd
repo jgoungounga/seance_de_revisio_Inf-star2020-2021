@@ -1,0 +1,58 @@
+---
+title: "seance_de_revision"
+author: "Juste Goungounga"
+date: "02/11/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Question 
+
+200 patients arrivent en mˆeme temps un jour et vous connaissez leur âge, leur
+temp´erature et leur tension art´erielle systolique (TAS)
+Fixer la graine à 123
+Générer 200 patients dans un dataframe appelé emergency contenant les
+variables:
+
+- age: suivant une distribution normale de moyenne 45, d’´ecart type 20, de
+minimum 16 et de maximum 85.
+
+- temp suivant une distribution uniforme de minimum 36.5 et de maximum 40.
+
+- TAS: suivant une distribution uniforme de minimum 8 et de maximum 22.
+
+```{r generate}
+n = 200
+seed = 123
+set.seed(seed = seed)
+temp  <- runif(n = n, min = 36.5, max = 40)
+TAS <- runif(n= n, min = 8, max = 22)
+age <- rnorm(n=n , mean = 45, sd = 20)
+age_mean <- 45
+age_sd <- 20
+age_min <- 16
+age_max <- 85
+
+age0 <- 9
+age <- list()
+i <- 0
+while (age0 < age_min | age0 > age_max &  i < 200) {
+  agex <- rnorm(n = 1, mean = age_mean, sd = age_sd)
+  
+  if(agex > age_min | age0 < age_max) {
+    
+    age[[i]] <- c(agex)
+    i <- length(age)
+    i <- i + 1
+  }else{
+    i <- i + 1
+  }
+}
+
+
+```
+
+
