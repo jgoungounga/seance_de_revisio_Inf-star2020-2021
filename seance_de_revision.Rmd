@@ -39,19 +39,22 @@ age_max <- 85
 age0 <- 9
 age <- list()
 i <- 0
-while (age0 < age_min | age0 > age_max &  i < 200) {
+#proposition de mr Ganon
+myrnorm <- function(id, seed = 123, age_mean,age_sd, age_min,age_max) {
+  set.seed(seed)
+  age <- rep(NA, id)
+  for(i in 1:id){
+    age.x <- 9
+      while (age.x < age_min | age.x > age_max ) {
   agex <- rnorm(n = 1, mean = age_mean, sd = age_sd)
-  
-  if(agex > age_min | age0 < age_max) {
-    
-    age[[i]] <- c(agex)
-    i <- length(age)
-    i <- i + 1
-  }else{
-    i <- i + 1
+      }
+      age[i] <- age.x
   }
+  return(age)
 }
 
+age <- myrnorm(200,age_mean = 45, age_sd = 20, age_min = 16, age_max = 85, seed = 123)
+head(age)
 
 ```
 
